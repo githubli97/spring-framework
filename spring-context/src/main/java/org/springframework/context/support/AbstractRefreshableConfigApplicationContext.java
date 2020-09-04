@@ -117,6 +117,10 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 	/**
 	 * Resolve the given path, replacing placeholders with corresponding
 	 * environment property values if necessary. Applied to config locations.
+	 *
+	 * 使用环境变量中的key，value替换传入path中的${}字符串
+	 * 如：@param: "lihang${JAVA_HOME}" @return "lihang/Library/java/..."
+	 *
 	 * @param path the original file path
 	 * @return the resolved file path
 	 * @see org.springframework.core.env.Environment#resolveRequiredPlaceholders(String)

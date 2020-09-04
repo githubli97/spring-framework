@@ -247,6 +247,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 	/**
 	 * Create a new AbstractApplicationContext with no parent.
+	 *
+	 * 创建没有父容器的context
 	 */
 	public AbstractApplicationContext() {
 		this.resourcePatternResolver = getResourcePatternResolver();
@@ -551,10 +553,12 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		synchronized (this.startupShutdownMonitor) {
 			StartupStep contextRefresh = this.applicationStartup.start("spring.context.refresh");
 
-			// Prepare this context for refreshing.
+			// 更新容器的刷新时间，活动状态，是否关闭状态
+			// 处理环境参数System.getEnv(), System.getProperties(),封装web环境特有的环境参数
+			// 初始化applicationListeners，applicationEvents列表
 			prepareRefresh();
 
-			// Tell the subclass to refresh the internal bean factory.
+			// 通知子类刷新其内部的 bean factory.
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -634,11 +638,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				logger.debug("Refreshing " + getDisplayName());
 			}
 		}
-
-		// Initialize any placeholder property sources in the context environment.
+		// 初始化环境变量，当前类没有逻辑，主要给web相关context提供扩展
 		initPropertySources();
 
-		// Validate that all properties marked as required are resolvable:
+		// 校验必须额环境参数properties等，默认没有Validate that all properties marked as required are resolvable:
 		// see ConfigurablePropertyResolver#setRequiredProperties
 		getEnvironment().validateRequiredProperties();
 

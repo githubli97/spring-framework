@@ -29,6 +29,8 @@ import org.springframework.util.Assert;
  * that include the package path (e.g. "mypackage/myresource.txt"). Useful for
  * test harnesses as well as for application contexts embedded within JARs.
  *
+ * 独立的xml context， 从类路径获取类定义文件，解释相对路径，其包括包路径（例如，“mypackage的/ myresource.txt”）类路径资源名称
+ *
  * <p>The config location defaults can be overridden via {@link #getConfigLocations},
  * Config locations can either denote concrete files like "/myfiles/context.xml"
  * or Ant-style patterns like "/myfiles/*-context.xml" (see the
@@ -78,6 +80,8 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 	/**
 	 * Create a new ClassPathXmlApplicationContext, loading the definitions
 	 * from the given XML file and automatically refreshing the context.
+	 *
+	 * 根据xml文件加载类定义，并且自动刷新上下文
 	 * @param configLocation resource location
 	 * @throws BeansException if context creation failed
 	 */
@@ -126,10 +130,17 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 	/**
 	 * Create a new ClassPathXmlApplicationContext with the given parent,
 	 * loading the definitions from the given XML files.
+	 *
+	 * 创建xmlcontext根据给定的parent context，从xml文件中加载累的定义
+	 *
 	 * @param configLocations array of resource locations
 	 * @param refresh whether to automatically refresh the context,
 	 * loading all bean definitions and creating all singletons.
+	 * 加载所有的bean定义，并创建所有的单个实例
+	 *
 	 * Alternatively, call refresh manually after further configuring the context.
+	 * 或者，在进一步配置上下文之后，手动调用refresh。
+	 *
 	 * @param parent the parent context
 	 * @throws BeansException if context creation failed
 	 * @see #refresh()
