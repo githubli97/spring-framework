@@ -59,7 +59,7 @@ javadoc {
 
 repositories {
 	maven {
-		url "https://repo.spring.io/release"
+		url "https://maven.aliyun.com/repository/spring/release"
 	}
 }
 

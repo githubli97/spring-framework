@@ -58,7 +58,7 @@ public class ApiDiffPlugin implements Plugin<Project> {
 
 	private static final List<String> PACKAGE_INCLUDES = Collections.singletonList("org.springframework.*");
 
-	private static final URI SPRING_MILESTONE_REPOSITORY = URI.create("https://repo.spring.io/milestone");
+	private static final URI SPRING_MILESTONE_REPOSITORY = URI.create("https://maven.aliyun.com/repository/spring/milestone");
 
 	@Override
 	public void apply(Project project) {
